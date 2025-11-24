@@ -61,6 +61,7 @@ div.stButton > button:first-child:hover {
 """, unsafe_allow_html=True)
 
 import pandas as pd
+import os
 import pickle
 
 # ----------------------------
@@ -75,10 +76,13 @@ st.set_page_config(
 # ----------------------------
 # Load Model & Columns
 # ----------------------------
-with open("rf_model.pkl", "rb") as f:
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "rf_model.pkl")
+COLUMNS_PATH = os.path.join(os.path.dirname(__file__), "model_columns.pkl")
+
+with open(MODEL_PATH, "rb") as f:
     rf_model = pickle.load(f)
 
-with open("model_columns.pkl", "rb") as f:
+with open(COLUMNS_PATH, "rb") as f:
     model_columns = pickle.load(f)
 
 # ----------------------------
